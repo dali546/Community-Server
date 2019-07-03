@@ -30,7 +30,7 @@ type Query {
     event(id: ID! @eq): Event @find
     events: [Event!]! @paginate
     profile(id: ID! @eq): Profile @find
-    p   rofiles: [Profile!]! @paginate
+    profiles: [Profile!]! @paginate
 }
 
 type UserPaginator {
