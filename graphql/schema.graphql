@@ -24,7 +24,7 @@ type Event {
     user: User! @belongsTo(relation: "user")
 }
 
-type Query {
+type Query @middleware(checks: ["auth:api"]) {
     user(id: ID! @eq): User @find
     users: [User!]! @paginate
     event(id: ID! @eq): Event @find
