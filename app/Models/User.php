@@ -9,7 +9,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable {
     use Notifiable, HasApiTokens;
 
-    /**
+  /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -41,7 +41,7 @@ class User extends Authenticatable {
         return $this->hasMany(Event::class);
     }
 
-    public function profile(){
+    public function profile() {
         return $this->hasOne(Profile::class);
     }
 
