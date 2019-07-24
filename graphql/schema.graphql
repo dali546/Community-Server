@@ -31,6 +31,7 @@ type Query @middleware(checks: ["auth:api"]) {
     events: [Event!]! @paginate
     profile(id: ID! @eq): Profile @find
     profiles: [Profile!]! @paginate
+    validateToken: Boolean!
 }
 
 type UserPaginator {
