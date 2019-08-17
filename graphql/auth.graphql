@@ -39,7 +39,7 @@ input NewPasswordWithCodeInput {
 input RegisterInput {
     username: String @rules(apply: ["required"])
     email: String @rules(apply: ["required"])
-    password: String @rules(apply: ["required"])
+    password: String @rules(apply: ["required", "confirmed"])
     password_confirmation: String @rules(apply: ["required"])
 }
 type RegisterResponse {
@@ -50,9 +50,9 @@ type RegisterResponse {
 
 type Mutation {
     login(data: LoginInput): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Login@resolve")
+    register(data: RegisterInput!): AuthPayload! @field(resolver: "App\\GraphQL\\Mutations\\RegisterMutation@resolve")
     refreshToken(data: RefreshTokenInput): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\RefreshToken@resolve")
     logout: LogoutResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Logout@resolve")
     forgotPassword(data: ForgotPasswordInput!): ForgotPasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ForgotPassword@resolve")
     updateForgottenPassword(data: NewPasswordWithCodeInput): ForgotPasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ResetPassword@resolve")
-    register(data: RegisterInput!) : RegisterResponse! @field(resolver: "App\\GraphQL\\Mutations\\RegisterMutation@resolve")
 }
